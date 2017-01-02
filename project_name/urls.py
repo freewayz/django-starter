@@ -1,4 +1,4 @@
-"""lamido_site URL Configuration
+"""{{ project_name | lower }} URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -18,5 +18,5 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', include('website.urls'))
+    url(r'^', include('webapps.website.urls'))
 ]

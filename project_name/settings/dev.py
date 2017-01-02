@@ -4,7 +4,7 @@ from {{ project_name }}.utils import get_env
 DATABASES = {
     "default" : {
         "ENGINE" : "django.db.backends.mysql",
-        "NAME" : "{{ project_name }}",
+        "NAME" : "{{ project_name|lower }}",
         "USER" : "root",
         "PASSWORD" : get_env(env='DB_PASS'),
         "HOST" : "localhost"
