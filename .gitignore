@@ -2,4 +2,5 @@
 .vscode/
 *.idea/
 assets/
+*.swp
 *.sqlite3
