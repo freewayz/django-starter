@@ -6,7 +6,7 @@ install_requires = open('requirements.txt').read().splitlines()
 
 setup(
     # name of application
-    name='assignment',
+    name='{{ project_name | lower }}',
     # version number goes here
     version='0.0.1',
     # Authors name
@@ -19,7 +19,7 @@ setup(
     # include additional files into the package
     include_package_data=True,
 
-    url="http://finetune.ii",
+    url="http://{{ project_name | lower }}.io",
 
     install_requires=install_requires,
     entry_points={
