@@ -8,16 +8,35 @@ https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
 """
 
 import os
-import utils
-
 from django.core.wsgi import get_wsgi_application
 from django.conf.global_settings import STATIC_ROOT
-if utils.is_dev():        
+from .utils  import (
+    is_prod,
+    is_dev,
+    is_heroku,
+    is_docker
+)
+
+
+if is_dev():
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.dev")
 else:
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{ project_name }}.settings.prod")
 
 application = get_wsgi_application()
-if utils.is_prod():
+
+"""
+Use WhiteNoise as our static assets server if we are doing our
+deployment on Heroku.
+
+This basically check if export DEPLOYMENT=HEROKU
+"""
+if is_heroku():
     from whitenoise import WhiteNoise
     application = WhiteNoise(application, root=STATIC_ROOT)
+
+if is_docker():
+    """You might want to use NGINX to handle serving of static files
+        which has been configured in the docker section
+    """
+    pass

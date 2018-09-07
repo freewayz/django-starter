@@ -15,3 +15,13 @@ def is_dev():
 
 def is_prod():
     return not is_dev()
+
+def deployment_type():
+    return os.getenv('DEPLOYMENT', None)
+
+def is_docker():
+    deployment_type() == 'DOCKER'
+
+def is_heroku():
+    deployment_type() == 'HEROKU'
+
