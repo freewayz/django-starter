@@ -1,0 +1,13 @@
+version: '2'
+services:
+  django:
+    image: {{ project_name | lower }}
+    ports:
+      - 8000:8000
+    container_name: django-{{ project_name | lower }}
+    environment:
+      - DOCKER=100
+
+
+
+
